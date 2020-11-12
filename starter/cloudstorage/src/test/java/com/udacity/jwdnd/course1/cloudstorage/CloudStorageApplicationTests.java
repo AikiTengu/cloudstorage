@@ -63,5 +63,7 @@ class CloudStorageApplicationTests {
 		//Assertions.assertEquals("Invalid username or password", driver.getClass());
 	}
 
-	//TODO: Test signup, Test navigation,
+	//TODO: Test signup, Test navigation, Test uploading files, viewing files, deleting files,
+	// logout, Test adding new notes, viewing notes, deleting notes,
+	//Test adding new credentials, viewing credentials, deleting credentials
 }
