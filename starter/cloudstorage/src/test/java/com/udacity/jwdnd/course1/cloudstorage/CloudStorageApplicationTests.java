@@ -43,11 +43,24 @@ class CloudStorageApplicationTests {
 		driver.get("http://localhost:" + this.port + "/signup");
 		Assertions.assertEquals("Sign Up", driver.getTitle());
 	}
-/*
+
 	@Test
-	public void getSignupPage() {
-		driver.get("http://localhost:" + this.port + "/signup");
-		Assertions.assertEquals("Sign Up", driver.getTitle());
+	public void wrongLogin() {
+		String username = "Teddy";
+		String password = "qwerty";
+
+		driver.get("http://localhost:" + this.port + "/login");
+		LoginPage loginPage = new LoginPage(driver);
+
+		loginPage.login(username, password);
+
+		try {
+		Thread.sleep(5000);
+		}
+		catch (InterruptedException e){
+
+		};
+		//Assertions.assertEquals("Invalid username or password", driver.getClass());
 	}
-*/
+
 }
