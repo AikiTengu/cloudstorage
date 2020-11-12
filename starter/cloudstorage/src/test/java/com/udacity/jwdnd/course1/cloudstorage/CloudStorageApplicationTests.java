@@ -58,12 +58,46 @@ class CloudStorageApplicationTests {
 		Thread.sleep(5000);
 		}
 		catch (InterruptedException e){
+		};
+		//Assertions.assertEquals("Invalid username or password", driver.getClass());
+	}
+
+	@Test
+	public void SignupLoginLogoutFLow() {
+		String userName = "Teddy";
+		String firstName = "Teddy";
+		String lastName = "Teddy";
+		String password = "qwerty";
+
+		driver.get("http://localhost:" + this.port + "/signup");
+		SignupPage signupPage = new SignupPage(driver);
+		signupPage.signup(firstName, lastName, userName, password);
+
+		try {
+			Thread.sleep(5000);
+		}
+		catch (InterruptedException e){
+		};
+
+		driver.get("http://localhost:" + this.port + "/login");
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.login(userName, password);
+
+		try {
+			Thread.sleep(5000);
+		}
+		catch (InterruptedException e) {
+		};
+
+		driver.get("http://localhost:" + this.port + "/home");
+		HomePage homePage = new HomePage(driver);
+		homePage.logout();
 
 		};
 		//Assertions.assertEquals("Invalid username or password", driver.getClass());
 	}
 
-	//TODO: Test signup, Test navigation, Test uploading files, viewing files, deleting files,
-	// logout, Test adding new notes, viewing notes, deleting notes,
+	//TODO: Test uploading files, viewing files, deleting files,
+	// Test adding new notes, viewing notes, deleting notes,
 	//Test adding new credentials, viewing credentials, deleting credentials
-}
+
