@@ -15,11 +15,12 @@ public class NoteService {
     }
 
     public List<Note> getNotes(int userId) {
+        System.out.println("Retrieving notes for UserId: " + userId);
         return notesMapper.getNotes(userId);
     }
 
     public void addNote(Note note) {
         System.out.println("Posting Note: " + note.getNoteTitle() +" " + note.getNoteDescription());
-       // notesMapper.insert(note);
+        notesMapper.insert(note);
     }
 }
