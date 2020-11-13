@@ -55,7 +55,7 @@ class CloudStorageApplicationTests {
 		loginPage.login(username, password);
 
 		try {
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		}
 		catch (InterruptedException e){
 		};
@@ -74,7 +74,7 @@ class CloudStorageApplicationTests {
 		signupPage.signup(firstName, lastName, userName, password);
 
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(1000);
 		}
 		catch (InterruptedException e){
 		};
@@ -84,7 +84,7 @@ class CloudStorageApplicationTests {
 		loginPage.login(userName, password);
 
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(1000);
 		}
 		catch (InterruptedException e) {
 		};
@@ -94,6 +94,38 @@ class CloudStorageApplicationTests {
 		homePage.logout();
 
 		};
+
+	@Test
+	public void AddNotesTest() {
+		String userName = "Teddy";
+		String firstName = "Teddy";
+		String lastName = "Teddy";
+		String password = "qwerty";
+
+		driver.get("http://localhost:" + this.port + "/signup");
+		SignupPage signupPage = new SignupPage(driver);
+		signupPage.signup(firstName, lastName, userName, password);
+
+		try {
+			Thread.sleep(1000);
+		}
+		catch (InterruptedException e){
+		};
+
+		driver.get("http://localhost:" + this.port + "/login");
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.login(userName, password);
+
+		try {
+			Thread.sleep(1000);
+		}
+		catch (InterruptedException e) {
+		};
+
+		driver.get("http://localhost:" + this.port + "/home");
+		HomePage homePage = new HomePage(driver);
+		homePage.addNewNote();
+	};
 		//Assertions.assertEquals("Invalid username or password", driver.getClass());
 	}
 
