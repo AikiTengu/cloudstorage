@@ -108,28 +108,104 @@ class CloudStorageApplicationTests {
 
 		try {
 			Thread.sleep(1000);
+			driver.get("http://localhost:" + this.port + "/login");
+			LoginPage loginPage = new LoginPage(driver);
+			loginPage.login(userName, password);
+
+			Thread.sleep(1000);
+			driver.get("http://localhost:" + this.port + "/home");
 		}
 		catch (InterruptedException e){
 		};
 
-		driver.get("http://localhost:" + this.port + "/login");
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login(userName, password);
-
-		try {
-			Thread.sleep(1000);
-		}
-		catch (InterruptedException e) {
-		};
-
-		driver.get("http://localhost:" + this.port + "/home");
 		HomePage homePage = new HomePage(driver);
 		homePage.addNewNote();
 	};
-		//Assertions.assertEquals("Invalid username or password", driver.getClass());
+
+	@Test
+	public void AddDeleteNotesTest() {
+		String userName = "Teddy";
+		String firstName = "Teddy";
+		String lastName = "Teddy";
+		String password = "qwerty";
+
+		driver.get("http://localhost:" + this.port + "/signup");
+		SignupPage signupPage = new SignupPage(driver);
+		signupPage.signup(firstName, lastName, userName, password);
+
+		try {
+			Thread.sleep(1000);
+			driver.get("http://localhost:" + this.port + "/login");
+			LoginPage loginPage = new LoginPage(driver);
+			loginPage.login(userName, password);
+
+			Thread.sleep(1000);
+			driver.get("http://localhost:" + this.port + "/home");
+		}
+		catch (InterruptedException e){
+		};
+
+		HomePage homePage = new HomePage(driver);
+
+
+		try {
+			homePage.addNewNote();
+			ResultsPage resultsPage = new ResultsPage(driver);
+			resultsPage.getBackFromSaveNote();
+			Thread.sleep(1000);
+			homePage.deleteNote();
+			Thread.sleep(1000);
+			resultsPage.getBackFromDelNote();
+		}
+		catch (InterruptedException e) {
+
+		};
+
+	};
+
+	@Test
+	public void AddEditNotesTest() {
+		String userName = "Teddy";
+		String firstName = "Teddy";
+		String lastName = "Teddy";
+		String password = "qwerty";
+
+		driver.get("http://localhost:" + this.port + "/signup");
+		SignupPage signupPage = new SignupPage(driver);
+		signupPage.signup(firstName, lastName, userName, password);
+
+		try {
+			Thread.sleep(1000);
+			driver.get("http://localhost:" + this.port + "/login");
+			LoginPage loginPage = new LoginPage(driver);
+			loginPage.login(userName, password);
+
+			Thread.sleep(1000);
+			driver.get("http://localhost:" + this.port + "/home");
+		}
+		catch (InterruptedException e){
+		};
+
+		HomePage homePage = new HomePage(driver);
+
+
+		try {
+			homePage.addNewNote();
+			ResultsPage resultsPage = new ResultsPage(driver);
+			resultsPage.getBackFromSaveNote();
+			Thread.sleep(1000);
+			homePage.editNote();
+			Thread.sleep(1000);
+		}
+		catch (InterruptedException e) {
+
+		};
+
+	};
+
 	}
 
 	//TODO: Test uploading files, viewing files, deleting files,
-	// Test adding new notes, viewing notes, deleting notes,
+
 	//Test adding new credentials, viewing credentials, deleting credentials
 

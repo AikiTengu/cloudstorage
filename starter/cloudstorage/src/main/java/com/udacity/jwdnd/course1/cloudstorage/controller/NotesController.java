@@ -34,7 +34,7 @@ public class NotesController {
     public String deleteNote(@RequestParam("id") int noteid) {
         if (noteid > 0) {
             noteService.deleteNote(noteid);
-            return "redirect:/result?success";
+            return "redirect:/result?delnotesuccess";
         }
         return "redirect:/result?error";
     }
@@ -43,14 +43,20 @@ public class NotesController {
     public String postNotes (Note note, Authentication authentication, Model model){
         int userId = userService.getUserId(authentication.getName());
         note.setUserId(userId);
-        noteService.addNote(note);
       //  note.setNoteDescription(model.getAttribute("notedescription").toString());
       //  note.setUserID(userService.getUserId(authentication.getName()));
+        if (note.getNoteId() != null) {
+            noteService.updateNote(note);
+            return "redirect:/result?editnotesuccess";
+        }
+        else {
+            noteService.insertNote(note);
+            return "redirect:/result?addnotesuccess";
+        }
+      //  List<Note> notelist = noteService.getNotes(userId);
+      //  model.addAttribute("notelist", notelist);
 
-        List<Note> notelist = noteService.getNotes(userId);
-        model.addAttribute("notelist", notelist);
 
 
-        return "redirect:/result?success";
     }
 }
