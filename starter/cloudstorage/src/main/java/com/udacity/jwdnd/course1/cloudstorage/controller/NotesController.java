@@ -9,12 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller()
-@RequestMapping("/notes")
+
 public class NotesController {
     private NoteService noteService;
     private UserService userService;
@@ -24,12 +25,21 @@ public class NotesController {
         this.noteService = noteService;
     }
 
-    @GetMapping()
+    @GetMapping("/notes")
     public String getNotes(Authentication authentication) {
         return "notes";
     }
 
-    @PostMapping()
+    @GetMapping("/notes/delete")
+    public String deleteNote(@RequestParam("id") int noteid) {
+        if (noteid > 0) {
+            noteService.deleteNote(noteid);
+            return "redirect:/result?success";
+        }
+        return "redirect:/result?error";
+    }
+
+    @PostMapping("/notes")
     public String postNotes (Note note, Authentication authentication, Model model){
         int userId = userService.getUserId(authentication.getName());
         note.setUserId(userId);
@@ -41,6 +51,6 @@ public class NotesController {
         model.addAttribute("notelist", notelist);
 
 
-        return "home";
+        return "redirect:/result?success";
     }
 }

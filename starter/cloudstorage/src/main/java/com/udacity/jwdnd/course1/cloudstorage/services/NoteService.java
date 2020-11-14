@@ -23,4 +23,9 @@ public class NoteService {
         System.out.println("Posting Note: " + note.getNoteTitle() +" " + note.getNoteDescription());
         notesMapper.insert(note);
     }
+    public void deleteNote(int noteid) {
+        System.out.println("Deleteing Note: " + noteid);
+        notesMapper.delete(noteid);
+    }
+
 }
