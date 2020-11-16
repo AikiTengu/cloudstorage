@@ -15,22 +15,18 @@ public class NoteService {
     }
 
     public List<Note> getNotes(int userId) {
-        System.out.println("Retrieving notes for UserId: " + userId);
         return notesMapper.getNotes(userId);
     }
 
     public void insertNote(Note note) {
-            System.out.println("Inserting Note: " + note.getNoteTitle() +" " + note.getNoteDescription());
             notesMapper.insert(note);
     }
 
     public void updateNote(Note note) {
-        System.out.println("Updating Note: " + note.getNoteTitle() +" " + note.getNoteDescription());
         notesMapper.update(note);
     }
 
     public void deleteNote(int noteid) {
-        System.out.println("Deleteing Note: " + noteid);
         notesMapper.delete(noteid);
     }
 

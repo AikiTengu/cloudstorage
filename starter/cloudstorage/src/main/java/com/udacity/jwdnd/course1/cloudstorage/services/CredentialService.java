@@ -19,23 +19,19 @@ public class CredentialService {
     }
 
     public List<Credential> getCredentials(int userId) {
-        System.out.println("Retrieving Credentials for UserId: " + userId);
         List<Credential> credentials = credentialsMapper.getCredential(userId);
         return credentials.stream().map(this::decrypt).collect(Collectors.toList());
     }
 
     public void insert(Credential credential) {
-        System.out.println("Inserting Credential: " + credential.getUrl() + " for user: " + credential.getUserName());
         credentialsMapper.insert(encrypt(credential));
     }
 
     public void updateCredential(Credential credential) {
-        System.out.println("Updating Credential: " + credential.getUrl());
         credentialsMapper.update(encrypt(credential));
     }
 
     public void deleteCredential(int credentialId) {
-        System.out.println("Deleting Credential: " + credentialId);
         credentialsMapper.delete(credentialId);
     }
 
@@ -44,7 +40,6 @@ public class CredentialService {
         byte[] bkey = new byte[16];
         random.nextBytes(bkey);
         String key = Base64.getEncoder().encodeToString(bkey);
-        System.out.println("Encrypting Credential with key " + key);
         credential.setKey(key);
         credential.setPassword(encryptionService.encryptValue(credential.getPassword(), key));
         return credential;
