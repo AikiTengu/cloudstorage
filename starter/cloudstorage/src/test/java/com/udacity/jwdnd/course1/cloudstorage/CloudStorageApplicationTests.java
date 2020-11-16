@@ -196,6 +196,7 @@ class CloudStorageApplicationTests {
 			Thread.sleep(1000);
 			homePage.editNote();
 			Thread.sleep(1000);
+			resultsPage.getBackFromEditNote();
 		}
 		catch (InterruptedException e) {
 
@@ -205,7 +206,5 @@ class CloudStorageApplicationTests {
 
 	}
 
-	//TODO: Test uploading files, viewing files, deleting files,
-
-	//Test adding new credentials, viewing credentials, deleting credentials
+	//TODO: Test uploading files, viewing files, deleting files, Test adding new credentials, viewing credentials, deleting credentials
 

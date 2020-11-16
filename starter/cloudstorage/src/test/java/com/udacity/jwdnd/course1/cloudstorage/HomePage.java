@@ -69,11 +69,20 @@ public class HomePage {
         };
     }
     public void editNote() {
+        String title = "2";
+        String description = "NOTE EDITED";
         try {
             this.navNotes.click();
             Thread.sleep(1000);
             this.editNoteButton.click();
             Thread.sleep(1000);
+            this.titleText.clear();
+            this.titleText.sendKeys(title);
+            Thread.sleep(1000);
+            this.descriptionText.clear();
+            this.descriptionText.sendKeys(description);
+            Thread.sleep(1000);
+            this.saveNoteButton.click();
         }
         catch (InterruptedException e) {
         };

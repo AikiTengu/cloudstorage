@@ -2,7 +2,6 @@ package com.udacity.jwdnd.course1.cloudstorage.services;
 
 import com.udacity.jwdnd.course1.cloudstorage.mapper.NotesMapper;
 import com.udacity.jwdnd.course1.cloudstorage.model.Note;
-import org.apache.ibatis.jdbc.Null;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class NoteService {
     }
 
     public void insertNote(Note note) {
-            System.out.println("Posting Note: " + note.getNoteTitle() +" " + note.getNoteDescription());
+            System.out.println("Inserting Note: " + note.getNoteTitle() +" " + note.getNoteDescription());
             notesMapper.insert(note);
     }
 

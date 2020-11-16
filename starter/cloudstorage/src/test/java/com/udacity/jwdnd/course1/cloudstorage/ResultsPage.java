@@ -12,8 +12,14 @@ public class ResultsPage {
     @FindBy(id = "clickbait-delnotesuccess")
     private WebElement successDelNoteReturn;
 
+    @FindBy(id = "clickbait-editnotesuccess")
+    private WebElement successEditNoteReturn;
+
     @FindBy(id = "clickbait-error")
     private WebElement errorReturn;
+
+
+
 
     public ResultsPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
@@ -25,5 +31,9 @@ public class ResultsPage {
 
     public void getBackFromDelNote() {
         successDelNoteReturn.click();
+    }
+
+    public void getBackFromEditNote() {
+        successEditNoteReturn.click();
     }
 }

@@ -22,6 +22,18 @@
                 <h1 class="display-5">Success</h1>
                 <span>Your note was successfully deleted. Click <a th:href="@{/home}" id="clickbait-delnotesuccess">here</a> to continue.</span>
             </div>
+            <div th:if="${param.addcredsuccess}" class="alert alert-success fill-parent">
+                <h1 class="display-5">Success</h1>
+                <span>Your credential was successfully added. Click <a th:href="@{/home}" id="clickbait-savecredsuccess">here</a> to continue.</span>
+            </div>
+            <div th:if="${param.editcredsuccess}" class="alert alert-success fill-parent">
+            <h1 class="display-5">Success</h1>
+            <span>Your credential was successfully edited. Click <a th:href="@{/home}" id="clickbait-editcredsuccess">here</a> to continue.</span>
+            </div>
+            <div th:if="${param.delcredsuccess}" class="alert alert-success fill-parent">
+            <h1 class="display-5">Success</h1>
+            <span>Your credential was successfully deleted. Click <a th:href="@{/home}" id="clickbait-delcredsuccess">here</a> to continue.</span>
+            </div>
             <div th:if="${param.error}" class="alert alert-danger fill-parent">
                 <h1 class="display-5">Error</h1>
                 <span>Your changes were not saved. Click <a th:href="@{/home}" id="clickbait-error">here</a> to continue.</span>

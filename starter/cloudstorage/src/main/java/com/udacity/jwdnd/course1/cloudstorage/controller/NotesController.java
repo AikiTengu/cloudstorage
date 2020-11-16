@@ -8,11 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 @Controller()
 
@@ -40,11 +37,9 @@ public class NotesController {
     }
 
     @PostMapping("/notes")
-    public String postNotes (Note note, Authentication authentication, Model model){
+    public String postNotes (Note note, Authentication authentication){
         int userId = userService.getUserId(authentication.getName());
         note.setUserId(userId);
-      //  note.setNoteDescription(model.getAttribute("notedescription").toString());
-      //  note.setUserID(userService.getUserId(authentication.getName()));
         if (note.getNoteId() != null) {
             noteService.updateNote(note);
             return "redirect:/result?editnotesuccess";
@@ -53,10 +48,5 @@ public class NotesController {
             noteService.insertNote(note);
             return "redirect:/result?addnotesuccess";
         }
-      //  List<Note> notelist = noteService.getNotes(userId);
-      //  model.addAttribute("notelist", notelist);
-
-
-
     }
 }
