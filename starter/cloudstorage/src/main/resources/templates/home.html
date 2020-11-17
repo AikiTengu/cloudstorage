@@ -81,8 +81,8 @@
                                             <button type="button" th:onclick="javascript:showNoteModal([[${note}]])" id="edit_note" class="btn btn-success">Edit</button>
                                             <a class="btn btn-danger" th:href="@{/notes/delete(id=${note.noteId})}" id="delete_note">Delete</a>
                                         </td>
-                                        <th scope="row" th:text="${note.noteTitle}"></th>
-                                        <td th:text="${note.noteDescription}"> </td>
+                                        <th scope="row" name="ntlist" th:text="${note.noteTitle}"></th>
+                                        <td name="ndlist" th:text="${note.noteDescription}"> </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -120,7 +120,7 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-credentials" role="tabpanel" aria-labelledby="nav-credentials-tab">
-                        <button style="margin: 0.25em;" type="button" class="btn btn-info float-right" onclick="showCredentialModal()">
+                        <button style="margin: 0.25em;" type="button" id="addCredentialButton" class="btn btn-info float-right" onclick="showCredentialModal()">
                             + Add a New Credential
                         </button>
 
@@ -137,12 +137,12 @@
                                 <tbody>
                                 <tr th:each="credential: ${credentiallist}">
                                     <td>
-                                        <button type="button" th:onclick="javascript:showCredentialModal([[${credential}]])" class="btn btn-success">Edit</button>
-                                        <a class="btn btn-danger" th:href="@{/credentials/delete(id=${credential.credentialId})}">Delete</a>
+                                        <button type="button" th:onclick="javascript:showCredentialModal([[${credential}]])" id="edit-cred" class="btn btn-success">Edit</button>
+                                        <a class="btn btn-danger" id="delete-cred" th:href="@{/credentials/delete(id=${credential.credentialId})}">Delete</a>
                                     </td>
-                                    <th scope="row" th:text="${credential.url}"></th>
-                                    <td th:text="${credential.userName}"></td>
-                                    <td th:text="${credential.password}"></td>
+                                    <th scope="row" name="credurllist" th:text="${credential.url}"></th>
+                                    <td name="creduserlist" th:text="${credential.userName}"></td>
+                                    <td name="credpwlist" th:text="${credential.password}"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" onclick="$('#credentialSubmit').click();">Save changes</button>
+                                        <button type="button" id="save-cred" class="btn btn-primary" onclick="$('#credentialSubmit').click();">Save changes</button>
                                     </div>
                                 </div>
                             </div>

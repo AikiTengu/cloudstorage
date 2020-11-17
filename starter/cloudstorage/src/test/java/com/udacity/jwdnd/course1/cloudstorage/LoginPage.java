@@ -16,6 +16,9 @@ public class LoginPage {
     @FindBy(id="submit-button")
     private WebElement submitButton;
 
+    @FindBy(id="alert")
+    private WebElement alertLabel;
+
     public LoginPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver,this);
     }
@@ -26,4 +29,7 @@ public class LoginPage {
         this.submitButton.click();
     }
 
+    public String loginResult () {
+        return alertLabel.getText();
+    }
 }

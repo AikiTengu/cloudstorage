@@ -15,6 +15,15 @@ public class ResultsPage {
     @FindBy(id = "clickbait-editnotesuccess")
     private WebElement successEditNoteReturn;
 
+    @FindBy(id = "clickbait-savecredsuccess")
+    private WebElement successSaveCredReturn;
+
+    @FindBy(id = "clickbait-delcredsuccess")
+    private WebElement successDelCredReturn;
+
+    @FindBy(id = "clickbait-editcredsuccess")
+    private WebElement successEditCredReturn;
+
     @FindBy(id = "clickbait-error")
     private WebElement errorReturn;
 
@@ -35,5 +44,17 @@ public class ResultsPage {
 
     public void getBackFromEditNote() {
         successEditNoteReturn.click();
+    }
+
+    public void getBackFromSaveCred() {
+        successSaveCredReturn.click();
+    }
+
+    public void getBackFromDelCred() {
+        successDelCredReturn.click();
+    }
+
+    public void getBackFromEditCred() {
+        successEditCredReturn.click();
     }
 }
