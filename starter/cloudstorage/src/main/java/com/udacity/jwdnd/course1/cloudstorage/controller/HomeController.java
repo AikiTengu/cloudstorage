@@ -19,7 +19,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/home")
-
 public class HomeController {
 
     private FileService fileService;
@@ -35,18 +34,6 @@ public class HomeController {
         this.credentialService = credentialService;
     }
 
- /*   @GetMapping(value = "/home")
-    public ModelAndView getHomePage(Authentication authentication){
-        ModelAndView mav = new ModelAndView("home");
-        int userId = userService.getUserId(authentication.getName());
-        List<Note> notelist = noteService.getNotes(userId);
-
-        mav.addObject("notelist", notelist);
-
-
-        return mav;
-    }*/
-
     @GetMapping()
     public String homeView(Authentication authentication, Model model) {
         int userId = userService.getUserId(authentication.getName());
@@ -58,5 +45,6 @@ public class HomeController {
         model.addAttribute("credentiallist", credentiallist);
         return "home";
     }
+
 
 }

@@ -29,11 +29,8 @@ public class NotesController {
 
     @GetMapping("/notes/delete")
     public String deleteNote(@RequestParam("id") int noteid) {
-        if (noteid > 0) {
-            noteService.deleteNote(noteid);
-            return "redirect:/result?delnotesuccess";
-        }
-        return "redirect:/result?error";
+        noteService.deleteNote(noteid);
+        return "redirect:/result?delnotesuccess";
     }
 
     @PostMapping("/notes")

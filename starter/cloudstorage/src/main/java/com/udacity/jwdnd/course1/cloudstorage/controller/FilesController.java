@@ -29,11 +29,8 @@ public class FilesController {
 
     @GetMapping("/files/delete")
     public String deleteFile(@RequestParam("id") int fileid) {
-        if (fileid > 0) {
-            fileService.deleteFile(fileid);
-            return "redirect:/result?delfilesuccess";
-        }
-        return "redirect:/result?error";
+        fileService.deleteFile(fileid);
+        return "redirect:/result?delfilesuccess";
     }
 
     @PostMapping("/files")

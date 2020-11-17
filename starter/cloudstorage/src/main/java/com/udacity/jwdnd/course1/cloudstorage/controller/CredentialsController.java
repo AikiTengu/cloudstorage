@@ -30,11 +30,8 @@ public class CredentialsController {
 
     @GetMapping("/credentials/delete")
     public String deleteCredential(@RequestParam("id") int credentialId) {
-        if (credentialId > 0) {
-            credentialService.deleteCredential(credentialId);
-            return "redirect:/result?delcredsuccess";
-        }
-        return "redirect:/result?error";
+        credentialService.deleteCredential(credentialId);
+        return "redirect:/result?delcredsuccess";
     }
 
     @PostMapping("/credentials")
